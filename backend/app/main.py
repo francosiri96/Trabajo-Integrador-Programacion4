@@ -1,0 +1,35 @@
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.core.config import settings
+from app.core.database import create_all_tables
+from app.modules.auth.router import router as auth_router
+from app.modules.usuarios.router import router as usuarios_router
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    create_all_tables()
+    yield
+
+
+app = FastAPI(
+    title="Food Store API",
+    description="TPI Programación 4: sistema de pedidos de comida.",
+    version="1.0.0",
+    lifespan=lifespan,
+)
+
+# allow_credentials permite que el navegador mande la cookie de sesión
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[settings.FRONTEND_ORIGIN],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(auth_router, prefix="/api/v1")
+app.include_router(usuarios_router, prefix="/api/v1")
