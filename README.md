@@ -5,7 +5,7 @@ Trabajo Práctico Integrador de Programación 4 (UTN - TUPaD).
 Aplicación web para un negocio de comidas: los clientes se registran, recorren el catálogo, arman el carrito y confirman pedidos; el administrador gestiona categorías, productos, stock, pedidos y usuarios.
 
 - **Repositorio:** https://github.com/francosiri96/Trabajo-Integrador-Programacion4
-- **Video de demostración:** COMPLETAR_LINK_DEL_VIDEO
+- **Video de demostración:** https://www.youtube.com/watch?v=EqcipD2DZLk
 
 ## Tecnologías
 
